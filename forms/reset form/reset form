@@ -1,0 +1,47 @@
+import 'dart:ui';
+
+import 'package:com/detail_Class.dart';
+import 'package:flutter/material.dart';
+import 'detail_Class.dart';
+
+void main() => runApp(
+      MaterialApp(home: home()),
+    );
+
+class home extends StatefulWidget {
+  const home({Key? key}) : super(key: key);
+
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Text(
+            "RESET FORM",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(),
+                ElevatedButton(
+                    onPressed: () {
+                      _formKey.currentState!.reset();
+                    },
+                    child: Text("Reset form"))
+              ],
+            ),
+          ),
+        ));
+  }
+}
